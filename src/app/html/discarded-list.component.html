@@ -1,0 +1,11 @@
+<h2>Discarded cards</h2>
+<div class="playingCards rotateHand">
+    <ul class="deck">
+        <li *ngFor="let card of cardList">
+            <div class="card" ngClass="{{card.rank()}} {{card.suit}}">
+                <span class="rank">{{getCardValueSymbol(card)}}</span>
+                <span class="suit">{{getCardSuitSymbol(card)}}</span>
+            </div>
+        </li>
+    </ul>
+</div>

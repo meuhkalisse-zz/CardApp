@@ -1,0 +1,21 @@
+<div *ngIf="!gameIngoing()">
+    <h2>Game</h2>
+    <div class="d-flex">
+        <div class="p-2 form-group">
+            <label for="txtGameName">Game name</label>
+            <input id="txtGameName" class="form-control" [(ngModel)]="gameName">
+        </div>
+        <div class="p-2 form-group">
+            <label for="nbPlayer"># of players</label>
+            <input id="nbPlayer" class="form-control" type="number" [(ngModel)]="nbPlayer">
+        </div>
+        <!-- <div class="p-2 form-group">
+            <label for="cardInHand"># of cards</label>
+            <input id="cardInHand" class="form-control" type="number" [(ngModel)]="cardInHand">
+        </div> -->
+    </div>
+    <div class="form-group">
+        <button id="btnNewGame" class="btn btn-primary" (click)="createGame()">New Game</button>
+    </div>
+</div>
+<game-display *ngIf="gameIngoing()"></game-display>

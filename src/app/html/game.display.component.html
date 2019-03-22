@@ -1,0 +1,34 @@
+<div *ngIf="gameService.currentGame" class="d-flex flex-column">
+    <div class="d-flex justify-content-center">
+        <h2>{{gameService.currentGame.name}}</h2>
+    </div>
+    <div class="playingCards rotateHand d-flex justify-content-center">
+        <ul class="deck">
+            <li *ngFor="let card of getDeck()">
+                <div class="card back">*</div>
+            </li>
+        </ul>
+    </div>
+    <div class="d-flex justify-content-center">
+        <button id="btnDistribute" class="btn btn-primary" (click)="distributeCards()">New round</button>
+    </div>
+    <div class="d-flex flex-row flex-wrap">
+        <div class="playingCards rotateHand col" *ngFor="let player of getPlayers()">
+            <p>{{player.name}}</p>
+            <ul class="hand">
+                <li *ngFor="let card of playerHand(player)">
+                    <div class="card" ngClass="{{card.rank()}} {{card.suit}}">
+                        <span class="rank">{{getCardValueSymbol(card)}}</span>
+                        <span class="suit">{{getCardSuitSymbol(card)}}</span>
+                    </div>
+                </li>
+            </ul>
+            <p>
+                {{player.hand.result}}
+            </p>
+        </div>
+    </div>
+    <div>
+        <button class="btn btn-primary" id="btnCloseGame" (click)="endGame()">End game</button>
+    </div>
+</div>
